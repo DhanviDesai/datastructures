@@ -1,15 +1,19 @@
 package main
 
 import (
-	"github.com/DhanviDesai/datastructures/linkedlist"
+	"fmt"
+
+	"github.com/DhanviDesai/datastructures/binarysearchtree"
 )
 
 func main() {
-	linkedlist.AddNode(1)
-	linkedlist.AddNode(2)
-	linkedlist.AddNode(3)
-	linkedlist.AddNode(4)
-	linkedlist.AddNode(5)
-	linkedlist.TraverseList()
+	k := 1
+	binarysearchtree.AddNode(3)
+	binarysearchtree.AddNode(1)
+	binarysearchtree.AddNode(2)
+	binarysearchtree.AddNode(5)
+	binarysearchtree.AddNode(4)
+	fmt.Printf("kth smallest element is %d\n", binarysearchtree.InorderTraversal()[k-1])
+	fmt.Printf("Number of nodes is %d\n", binarysearchtree.CountNodes())
 
 }
