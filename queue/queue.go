@@ -1,31 +1,25 @@
 package queue
 
-var capacity = 10
+import (
+	"golang.org/x/exp/constraints"
+)
 
-type Queue[T any] struct {
-	QueueList []T
-	size      int
+type Queue[T constraints.Ordered] struct {
+	array []T
 }
 
-var queue = make([]int, capacity)
-
-var queue2 = Queue[int]{
-	QueueList: queue,
-	size:      capacity,
+func (q *Queue[T]) Add(value T) {
+	q.array = append(q.array, value)
 }
 
-var size = 0
-var start = -1
-var end = -1
-
-func Add(value int) {
-	queue = append(queue, value)
-	size++
-	end++
+func (q *Queue[T]) Poll() T {
+	element := q.array[0]
+	temp := make([]T, len(q.array)-1)
+	copy(temp, q.array[1:])
+	q.array = temp
+	return element
 }
 
-func Poll() int {
-	start++
-	size--
-	return queue[start]
+func (q *Queue[T]) HasElements() bool {
+	return len(q.array) > 0
 }

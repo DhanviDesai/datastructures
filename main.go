@@ -3,17 +3,30 @@ package main
 import (
 	"fmt"
 
-	"github.com/DhanviDesai/datastructures/binarysearchtree"
+	"github.com/DhanviDesai/datastructures/maxheap"
+	"github.com/DhanviDesai/datastructures/queue"
 )
 
 func main() {
-	k := 1
-	binarysearchtree.AddNode(3)
-	binarysearchtree.AddNode(1)
-	binarysearchtree.AddNode(2)
-	binarysearchtree.AddNode(5)
-	binarysearchtree.AddNode(4)
-	fmt.Printf("kth smallest element is %d\n", binarysearchtree.InorderTraversal()[k-1])
-	fmt.Printf("Number of nodes is %d\n", binarysearchtree.CountNodes())
+	m := maxheap.MaxHeap[int]{}
+	m.InsertElement(1)
+	m.InsertElement(2)
+	m.InsertElement(3)
+	m.InsertElement(4)
+	m.InsertElement(5)
+	for m.HasElements() {
+		fmt.Printf("Extracted element or max element is %d\n", m.ExtractElement())
+	}
+
+	q := queue.Queue[int]{}
+	q.Add(1)
+	q.Add(2)
+	q.Add(3)
+	q.Add(4)
+	q.Add(5)
+
+	for q.HasElements() {
+		fmt.Printf("Polled element from queue is %d\n", q.Poll())
+	}
 
 }
